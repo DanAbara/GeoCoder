@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <title>Address Geocoder</title>
+    <head>
+        <link rel="stylesheet" href="../static/main.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Geocoder Service</h2>
+            <h4>Please upload a csv file which has a column of addresses to geocode</h4>
+            <div class="message">
+                {{text | safe}}
+            </div>
+            <form action="{{url_for('success')}}" method="POST" enctype="multipart/form-data">
+                <input type="file" name="csvfile" required><br>
+                <button type="submit">Submit</button>    
+            </form>
+            
+        </div>
+    </body>
+</html>
