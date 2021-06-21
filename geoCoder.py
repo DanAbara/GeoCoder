@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from werkzeug.utils import secure_filename
 import pandas as pd
 from geopy.geocoders import ArcGIS
@@ -19,10 +19,6 @@ def getLocation(address):
 def index():
     return render_template("index.html")
 
-# @app.route("/download")
-# def download():
-#     pass
-
 @app.route("/success", methods=["POST"])
 def success():
     if request.method=="POST":
@@ -33,16 +29,20 @@ def success():
 
         # check that there is a column in the csv with called 'address' or 'Address'
         if checkFileColumns(df) is True:
-            uploaded_file.save(secure_filename("uploaded"+uploaded_file.filename)) # save the file
+            #uploaded_file.save(secure_filename("uploaded"+uploaded_file.filename)) # save the file
             print(uploaded_file.filename)
 
             df["Latitude"]=[getLocation(address).latitude for address in df["Address"]]
             df["Longitude"]=[getLocation(address).longitude for address in df["Address"]]
             print(df)
+            df.to_csv("geocodedAddress.csv",index=False)
 
-            return render_template("success.html")
-            #return render_template("index.html",btn="download.html") # show the index page but now with the download button
+            return render_template("index.html",btn="download.html") # show the index page but now with the download button
     return render_template("index.html", text="Please ensure that there is an address column in your csv file!")
+
+@app.route("/download")
+def download():
+    return send_file("geocodedAddress.csv",download_name="geocoded_Address.csv",as_attachment=True)
 
 if __name__=="__main__":
     app.debug=True

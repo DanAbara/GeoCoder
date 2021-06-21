@@ -15,7 +15,9 @@
                 <input type="file" name="csvfile" required><br>
                 <button type="submit">Submit</button>    
             </form>
-            
+            {% if btn %}
+                {% include btn %}
+            {% endif %}
         </div>
     </body>
 </html>
