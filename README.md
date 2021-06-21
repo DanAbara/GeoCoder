@@ -8,8 +8,10 @@ The web application is built with Flask and the main python script is
 [static](https://github.com/DanAbara/GeoCoder/tree/master/static) folders respectively.
 
 ### Preview
-The following images show what the web application looks like.
+The following images show what the web application looks like when deployed
 
 #### Main Page
+![Main page](https://github.com/DanAbara/GeoCoder/blob/master/images/home.png)
 
 #### Download Page
+![Download page](https://github.com/DanAbara/GeoCoder/blob/master/images/download.png)
