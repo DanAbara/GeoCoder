@@ -19,7 +19,7 @@ def getLocation(address):
 def index():
     return render_template("index.html")
 
-@app.route("/success", methods=["POST"])
+@app.route("/success", methods=["POST","GET"])
 def success():
     if request.method=="POST":
 
@@ -30,14 +30,15 @@ def success():
         # check that there is a column in the csv with called 'address' or 'Address'
         if checkFileColumns(df) is True:
             #uploaded_file.save(secure_filename("uploaded"+uploaded_file.filename)) # save the file
-            print(uploaded_file.filename)
+            print(uploaded_file)
+            print(uploaded_file.filename) #print the filename
 
             df["Latitude"]=[getLocation(address).latitude for address in df["Address"]]
             df["Longitude"]=[getLocation(address).longitude for address in df["Address"]]
             print(df)
             df.to_csv("geocodedAddress.csv",index=False)
 
-            return render_template("index.html",btn="download.html") # show the index page but now with the download button
+            return render_template("index.html",btn="download.html",table=df.to_html(classes="tabs",header=True,index=False)) # show the index page but now with the html of download button embedded from download.html
     return render_template("index.html", text="Please ensure that there is an address column in your csv file!")
 
 @app.route("/download")

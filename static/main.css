@@ -50,3 +50,26 @@ html, body {
 .message {
     color: red;
 }
+
+.tabs {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    
+    /* to align center */
+    margin-left: auto;
+    margin-right: auto; 
+    
+}
+
+/* table headings */
+.tabs th {
+    border: 2px solid #008cba;
+    text-align: center;
+    padding: 3px;
+}
+
+/* table cells */
+.tabs td {
+    border: 1px solid #008cba;
+    padding: 4px;
+}

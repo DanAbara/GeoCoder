@@ -15,9 +15,13 @@
                 <input type="file" name="csvfile" required><br>
                 <button type="submit">Submit</button>    
             </form>
+            <div class="tabs">
+                {{table | safe}}
+            </div>
             {% if btn %}
                 {% include btn %}
             {% endif %}
+            
         </div>
     </body>
 </html>
