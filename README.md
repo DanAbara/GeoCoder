@@ -16,4 +16,4 @@ The following images show what the web application looks like when deployed
 #### Download Page
 ![Download page](https://github.com/DanAbara/GeoCoder/blob/master/images/download.png)
 
-**Last Update:** 21/06/2021
+**Last Update:** 06/2021
